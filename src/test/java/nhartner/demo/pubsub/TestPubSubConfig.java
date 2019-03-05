@@ -12,7 +12,6 @@ import com.google.pubsub.v1.ProjectTopicName;
 import com.google.pubsub.v1.PushConfig;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -29,11 +28,11 @@ public class TestPubSubConfig {
     private final CredentialsProvider credentialsProvider;
 
     private String projectId;
-    private String topicName = "test-topic";
-    private String subscriptionName = "test-subscription";
+    private String topicName = "test-topic-5";
 
-    TestPubSubConfig(@Autowired @Value("${spring.cloud.gcp.pubsub.emulator-host}") String emulatorHost,
-                     @Autowired @Value("${spring.cloud.gcp.project-id}") String projectId) throws IOException {
+    TestPubSubConfig(@Value("${spring.cloud.gcp.pubsub.emulator-host}") String emulatorHost,
+                     @Value("${spring.cloud.gcp.project-id}") String projectId,
+                     @Value("${nhartner.demo.subscription.name}") String subscriptionName) throws IOException {
         this.projectId = projectId;
         ManagedChannel channel = ManagedChannelBuilder.forTarget(emulatorHost).usePlaintext().build();
         channelProvider = FixedTransportChannelProvider.create(GrpcTransportChannel.create(channel));
