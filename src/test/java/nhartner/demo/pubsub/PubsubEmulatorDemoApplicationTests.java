@@ -37,19 +37,17 @@ public class PubsubEmulatorDemoApplicationTests {
     @Autowired
     private Publisher testPublisher;
 
-
     @Test
     public void testSubscriber() throws InterruptedException {
         Assert.assertEquals(0, subscriber.getReceiveCount());
-        publishMessage("hello");
+        testPublisher.publish(toMessage("hello"));
         Thread.sleep(1000);
         Assert.assertEquals(1, subscriber.getReceiveCount());
     }
 
-    private void publishMessage(String message) {
+    private static PubsubMessage toMessage(String message) {
         ByteString data = ByteString.copyFromUtf8(message);
-        PubsubMessage pubsubMessage = PubsubMessage.newBuilder().setData(data).build();
-        testPublisher.publish(pubsubMessage);
+        return PubsubMessage.newBuilder().setData(data).build();
     }
 
 }
