@@ -28,12 +28,14 @@ public class TestPubSubConfig {
     private final CredentialsProvider credentialsProvider;
 
     private String projectId;
-    private String topicName = "test-topic-5";
+    private String topicName;
 
     TestPubSubConfig(@Value("${spring.cloud.gcp.pubsub.emulator-host}") String emulatorHost,
                      @Value("${spring.cloud.gcp.project-id}") String projectId,
+                     @Value("${nhartner.demo.topic.name}") String topicName,
                      @Value("${nhartner.demo.subscription.name}") String subscriptionName) throws IOException {
         this.projectId = projectId;
+        this.topicName = topicName;
         ManagedChannel channel = ManagedChannelBuilder.forTarget(emulatorHost).usePlaintext().build();
         channelProvider = FixedTransportChannelProvider.create(GrpcTransportChannel.create(channel));
         credentialsProvider = NoCredentialsProvider.create();

@@ -21,12 +21,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestApplication.class)
+@TestPropertySource(locations="classpath:test.properties")
+@SpringBootTest(classes = { TestApplication.class, PubsubEmulatorDemoApplication.class })
 public class PubsubEmulatorDemoApplicationTests {
 
     @Autowired
