@@ -1,5 +1,7 @@
 # pubsub-emulator-demo
-Example Spring project showing how to use GCP emulator in a test
+Example Spring project showing how to use GCP emulator in a test.
+
+Before running, you must install and start up GCP pub sub emulator using the instructions here: https://cloud.google.com/pubsub/docs/emulator
 
 Key points:
 - Tests are overridden to hit emulator via `src/test/resources/test.properties` by setting `spring.cloud.gcp.pubsub-emulator-host: localhost:8085` (default emulator port)
