@@ -28,7 +28,7 @@ import java.io.IOException;
 
 @RunWith(SpringRunner.class)
 @TestPropertySource(locations="classpath:test.properties")
-@SpringBootTest(classes = { TestApplication.class, PubsubEmulatorDemoApplication.class })
+@SpringBootTest(classes = { PubsubEmulatorDemoApplication.class })
 public class PubsubEmulatorDemoApplicationTests {
 
     @Autowired

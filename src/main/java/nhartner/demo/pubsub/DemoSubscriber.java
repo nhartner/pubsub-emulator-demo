@@ -17,9 +17,9 @@ class DemoSubscriber {
 
     private final AtomicInteger receiveCount = new AtomicInteger();
 
-    public DemoSubscriber(PubSubTemplate template, @Value("${nhartner.demo.subscription.name}") String subscriptionName) {
+    public DemoSubscriber(PubSubTemplate template, DemoConfig config) {
         this.template = template;
-        this.subscriptionName = subscriptionName;
+        this.subscriptionName = config.getSubscriptionName();
     }
 
     @PostConstruct

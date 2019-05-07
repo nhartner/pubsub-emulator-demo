@@ -10,7 +10,7 @@ import com.google.cloud.pubsub.v1.*;
 import com.google.pubsub.v1.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.gcp.autoconfigure.pubsub.GcpPubSubProperties;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -25,10 +25,9 @@ public class PubSubResourceGenerator {
 
     private String projectId;
 
-    PubSubResourceGenerator(@Value("${spring.cloud.gcp.pubsub.emulator-host}") String emulatorHost,
-                     @Value("${spring.cloud.gcp.project-id}") String projectId) throws IOException {
-        this.projectId = projectId;
-        ManagedChannel channel = ManagedChannelBuilder.forTarget(emulatorHost).usePlaintext().build();
+    PubSubResourceGenerator(GcpPubSubProperties gcpPubSubProperties) throws IOException {
+        this.projectId = gcpPubSubProperties.getProjectId();
+        ManagedChannel channel = ManagedChannelBuilder.forTarget(gcpPubSubProperties.getEmulatorHost()).usePlaintext().build();
         channelProvider = FixedTransportChannelProvider.create(GrpcTransportChannel.create(channel));
         credentialsProvider = NoCredentialsProvider.create();
         topicAdminClient = topicAdminClient();
