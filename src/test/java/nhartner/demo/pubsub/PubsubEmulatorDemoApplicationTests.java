@@ -7,10 +7,11 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest(classes = { PubsubEmulatorDemoApplication.class })
-@TestPropertySource(locations="classpath:test.properties")
+@ActiveProfiles("unit-test")
 public class PubsubEmulatorDemoApplicationTests {
 
     @Autowired
