@@ -22,7 +22,6 @@ import java.io.IOException;
  * Creates the topic and subscription in GCP emulator. If emulator is not running, this will hang.
  */
 @Component
-@AutoConfigureAfter({DemoSubscriber.class})
 public class TestPubSubConfig {
 
     private final String topicName;

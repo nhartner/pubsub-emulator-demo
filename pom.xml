@@ -103,4 +103,12 @@
         </repository>
     </repositories>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub nhartner Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/nhartner/pubsub-emulator-demo</url>
+        </repository>
+    </distributionManagement>
+
 </project>
