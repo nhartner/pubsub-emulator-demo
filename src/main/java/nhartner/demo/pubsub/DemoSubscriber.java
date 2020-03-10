@@ -9,6 +9,9 @@ import javax.annotation.PostConstruct;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
+/**
+ * Testing
+ */
 @Service
 class DemoSubscriber {
 

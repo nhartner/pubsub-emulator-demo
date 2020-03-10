@@ -3,6 +3,9 @@ package nhartner.demo.pubsub;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Testing
+ */
 @Configuration
 @ConfigurationProperties(prefix = "nhartner.demo")
 public class DemoConfig {
